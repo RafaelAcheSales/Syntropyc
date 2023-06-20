@@ -123,38 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &169580115
+--- !u!1 &52246232 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8920290691392687693, guid: f736609a8d408654a994e4e9134fa229, type: 3}
+  m_PrefabInstance: {fileID: 777138256419609407}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 169580116}
-  m_Layer: 0
-  m_Name: Item
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &169580116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169580115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2599197, y: 0.53556687, z: -0.02080913}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1632282940}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &198589489
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +218,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   mainCamera: {fileID: 0}
   tooltipPrefab: {fileID: 334200110}
+  inventoryUI: {fileID: 52246232}
   player: {fileID: 0}
 --- !u!4 &980137152
 Transform:
@@ -495,7 +469,7 @@ GameObject:
   - component: {fileID: 1632282943}
   - component: {fileID: 1632282944}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: PickableItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,13 +482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632282939}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3255, y: -0.1385, z: 0.02080913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5854197, y: 0.39706686, z: 0}
   m_LocalScale: {x: 0.6490098, y: 0.62304807, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 169580116}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1632282942
 SpriteRenderer:
@@ -556,7 +530,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -617,6 +591,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 1a5f350fb8933b7468a17058f987f8eb, type: 2}
   spriteRenderer: {fileID: 0}
+  currentCollider: {fileID: 0}
+  pickupTimeout: 5
+  fadeValue: 1
+  fadeRateSpeed: 0.5
 --- !u!1 &1704929822
 GameObject:
   m_ObjectHideFlags: 0

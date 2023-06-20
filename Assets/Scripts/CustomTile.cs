@@ -6,8 +6,10 @@ public class CustomTile : MonoBehaviour
 {
     public float syntropy = 0f;
     public float lightLevel = 0f;
+
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
+    private 
     void Start()
     {
         syntropy = Random.Range(0f, 1f);
@@ -35,5 +37,10 @@ public class CustomTile : MonoBehaviour
     public string GetFormattedInfo()
     {
         return $"Syntropy: {syntropy}\nLight Level: {lightLevel}";
+    }
+
+    public bool TryPlant(SeedObject seed)
+    {
+        return false;
     }
 }

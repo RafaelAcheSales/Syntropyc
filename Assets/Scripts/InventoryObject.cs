@@ -6,9 +6,10 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
     public ItemObject item;
+    public GameObject prefab;
     public int amount;
 
-    public bool AddItem(ItemObject newItem, int amount)
+    public bool AddItem(ItemObject newItem, int amount, GameObject itemPrefab)
     {
         if (newItem == null)
         {
@@ -30,54 +31,60 @@ public class InventoryObject : ScriptableObject
 
         this.item = newItem;
         this.amount += amount;
+        this.prefab = itemPrefab;
         return true;
     }
 
-    public void RemoveItem(ItemObject newItem, int amount)
+    public GameObject RemoveItem(ItemObject newItem, int amount)
     {
         if (newItem == null)
         {
             Debug.LogWarning("Cannot remove null item from inventory.");
-            return;
+            return null;
         }
 
         if (amount <= 0)
         {
             Debug.LogWarning("Amount must be a positive value.");
-            return;
+            return null;
         }
 
         if (item != newItem)
         {
             Debug.LogWarning("Item to be removed is not in the inventory.");
-            return;
+            return null;
         }
 
         if (this.amount < amount)
         {
             Debug.LogWarning("Not enough items in the inventory to remove.");
-            return;
+            return null;
         }
 
         this.amount -= amount;
-
+        GameObject oldPrefab = this.prefab;
         if (this.amount == 0)
         {
             this.item = null;
+            this.prefab = null;
         }
+        return oldPrefab;
     }
 
-    public void DropItems()
+    public GameObject DropItems()
     {
         if (item == null)
         {
             Debug.LogWarning("No items in the inventory to drop.");
-            return;
+            return null;
         }
 
         // Code to drop the items goes here
 
         this.item = null;
         this.amount = 0;
+        GameObject oldPrefab = this.prefab;
+        this.prefab = null;
+        return oldPrefab;
     }
 }
