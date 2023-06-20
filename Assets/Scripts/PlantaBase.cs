@@ -26,7 +26,7 @@ public class PlantaBase : ScriptableObject
 
     public PlantLayer plantLayer;
 
-    public Sprite[] sprites = new Sprite[3];
+    public GameObject plantPrefab;
 
 }
 

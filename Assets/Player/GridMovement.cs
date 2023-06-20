@@ -4,7 +4,6 @@ public class GridMovement : MonoBehaviour
 {
 
 
-    public Grid grid;
     public float moveSpeed = 5f;
 
 
