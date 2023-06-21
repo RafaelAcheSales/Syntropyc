@@ -12,9 +12,11 @@ public class GridMovement : MonoBehaviour
     private Vector2 direction;
 
     private Rigidbody2D rb;
+    private GameObject playerVisual;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        playerVisual = transform.GetChild(0).gameObject;
     }
 
     private void Movement() {
@@ -39,9 +41,19 @@ public class GridMovement : MonoBehaviour
         Move(direction);
 
     }
+
+    void Rotation()
+    {
+        //ROtates visual
+        Vector3 mousePosition = GameManager.instance.GetMouseScreenPos();
+        Vector3 lookDirection = mousePosition - transform.position;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        playerVisual.transform.rotation = Quaternion.Euler(0f, 0f, angle-90f);
+    }
     private void Update() {
 
         Movement();
+        Rotation();
 
     }
 

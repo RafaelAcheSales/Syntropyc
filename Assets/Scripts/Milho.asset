@@ -15,7 +15,23 @@ MonoBehaviour:
   plantName: Milho
   maximunTimeToGrow: 18
   plantLayer: 0
-  sprites:
-  - {fileID: -441898290, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
-  - {fileID: 2081929068, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
-  - {fileID: -1791494714, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  plantPrefabPath: Plant
+  stageOneVisual:
+  - {fileID: -1414760181, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  - {fileID: 0}
+  stageTwoVisual:
+  - {fileID: 1127054566, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  - {fileID: 0}
+  stageThreeVisual:
+  - {fileID: -805887084, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  - {fileID: 0}
+  growthStages:
+  - row0: 000000
+    row1: 000100
+    row2: 000000
+  - row0: 000000
+    row1: 000100
+    row2: 000100
+  - row0: 000000
+    row1: 000100
+    row2: 000000

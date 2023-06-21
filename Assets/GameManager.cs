@@ -17,6 +17,16 @@ public class GameManager : MonoBehaviour
     public PlayerInventory playerInventory;
     private Vector2 offset;
     private bool enableTooltip = true;
+
+    private PlantaBase.PlantLayer currentViewLayer = PlantaBase.PlantLayer.Low;
+
+    // event delegate to hide/show branches for the currentViewLayer
+    public delegate void OnLayerViewToggle(PlantaBase.PlantLayer layer);
+
+    public static event OnLayerViewToggle onLayerViewToggle;
+
+
+
     private void Awake()
     {
         if (instance == null)
@@ -39,6 +49,7 @@ public class GameManager : MonoBehaviour
         ShowTileInfo();
         CheckToggleTooltip();
         CheckInventoryAction();
+        HandleLayerViewToggle();
         HandleClick();
     }
     public Vector3 GetMouseScreenPos()
@@ -90,6 +101,31 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<PlayerInventory>().DropItems();
         }
+    }
+
+    void HandleLayerViewToggle()
+    {
+        bool hasChanged = false;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentViewLayer = PlantaBase.PlantLayer.Low;
+            hasChanged = true;
+            //TODO hide branches
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentViewLayer = PlantaBase.PlantLayer.Medium;
+            hasChanged = true;
+            //TODO hide branches
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentViewLayer = PlantaBase.PlantLayer.High;
+            hasChanged = true;
+            //TODO show branches
+        }
+        if (onLayerViewToggle == null || !hasChanged) return;
+        onLayerViewToggle(currentViewLayer);
     }
 
     void HandleClick()
