@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -15,17 +16,30 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryUI;
     public GameObject player;
     public PlayerInventory playerInventory;
+    public int amountOfEachDebugItem = 5;
+    public GameObject[] debugItems;
     private Vector2 offset;
     private bool enableTooltip = true;
 
-    private PlantaBase.PlantLayer currentViewLayer = PlantaBase.PlantLayer.Low;
+    private int currentViewLayer = -1;
 
     // event delegate to hide/show branches for the currentViewLayer
-    public delegate void OnLayerViewToggle(PlantaBase.PlantLayer layer);
+    public delegate void OnLayerViewToggle(int layer);
 
     public static event OnLayerViewToggle onLayerViewToggle;
 
-
+    public static List<PlantaBase.PlantLayer> LayerSetSubtraction(PlantaBase.PlantLayer myLayer)
+    {
+        List<PlantaBase.PlantLayer> layers = new List<PlantaBase.PlantLayer>();
+        foreach (PlantaBase.PlantLayer layer in System.Enum.GetValues(typeof(PlantaBase.PlantLayer)))
+        {
+            if (layer != myLayer)
+            {
+                layers.Add(layer);
+            }
+        }
+        return layers;
+    }
 
     private void Awake()
     {
@@ -34,7 +48,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerInventory = player.GetComponent<PlayerInventory>();
     }
-    
+
     private void Start()
     {
 
@@ -42,15 +56,49 @@ public class GameManager : MonoBehaviour
         grid = FindObjectOfType<CustomGrid>();
 
         offset = new Vector2(150, 150);
-    }
 
+#if UNITY_EDITOR
+        SpawnDebugItems();
+#endif
+    }
     private void Update()
     {
-        ShowTileInfo();
+        CustomTile tile = GetTileAtMousePos();
+        ShowTileInfo(tile);
         CheckToggleTooltip();
         CheckInventoryAction();
         HandleLayerViewToggle();
-        HandleClick();
+        HandleClick(tile);
+        HandleWater(tile);
+        HanleCompostDebug(tile);
+        //HandleCut();
+    }
+
+    void SpawnDebugItems()
+    {
+        Vector3 playerPos = player.transform.position;
+        
+        List<SeedObject> debugSeeds = Resources.LoadAll<SeedObject>("Items/Seeds").ToList();
+        Debug.Log("debugSeeds: " + debugSeeds.Count);
+        foreach (GameObject item in debugItems)
+        {
+            Debug.Log("item: " + item.name);
+            if (item.TryGetComponent<PickableItem>(out PickableItem pickableItem))
+            {
+                for (int i = 0; i < amountOfEachDebugItem; i++)
+                {
+                    Vector3 itemOffset = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
+                    //test if pickableItem.item is subclass SeedObject
+                    GameObject spawnedItem = Instantiate(item, playerPos + itemOffset, Quaternion.identity);
+                    int randomIndex = Random.Range(0, debugSeeds.Count);
+                    spawnedItem.GetComponent<PickableItem>().item = debugSeeds[randomIndex];
+                    spawnedItem.SetActive(true);
+                    
+
+                }
+            }
+        }
+        
     }
     public Vector3 GetMouseScreenPos()
     {
@@ -59,9 +107,8 @@ public class GameManager : MonoBehaviour
         Vector3 mousePos = mainCamera.ScreenToWorldPoint(pos);
         return mousePos;
     }
-    void ShowTileInfo()
+    void ShowTileInfo(CustomTile tile)
     {
-        CustomTile tile = GetTileAtMousePos();
         if (tile != null)
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(tooltipPrefab.transform.parent as RectTransform, Input.mousePosition, null, out Vector2 localPoint);
@@ -108,19 +155,24 @@ public class GameManager : MonoBehaviour
         bool hasChanged = false;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            currentViewLayer = PlantaBase.PlantLayer.Low;
+            currentViewLayer = 0;
             hasChanged = true;
             //TODO hide branches
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currentViewLayer = PlantaBase.PlantLayer.Medium;
+            currentViewLayer = 1;
             hasChanged = true;
             //TODO hide branches
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            currentViewLayer = PlantaBase.PlantLayer.High;
+            currentViewLayer = 2;
+            hasChanged = true;
+            //TODO show branches
+        } if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentViewLayer = -1;
             hasChanged = true;
             //TODO show branches
         }
@@ -128,10 +180,9 @@ public class GameManager : MonoBehaviour
         onLayerViewToggle(currentViewLayer);
     }
 
-    void HandleClick()
+    void HandleClick(CustomTile tile)
     {
         if (!Input.GetMouseButtonDown(0)) return;
-        CustomTile tile = GetTileAtMousePos();
         ItemObject currentItem = playerInventory.inventory.item;
         if (currentItem != null)
         {
@@ -142,6 +193,20 @@ public class GameManager : MonoBehaviour
             //TODO handle click without item
         }
         
+    }
+
+    void HandleWater(CustomTile tile)
+    {
+        if (!Input.GetKeyDown(KeyCode.F)) return;
+        if (tile == null) return;
+        tile.AddWater(0.3f);
+        
+    }
+    void HanleCompostDebug(CustomTile tile)
+    {
+        if (!Input.GetKeyDown(KeyCode.C)) return;
+        if (tile == null) return;
+        tile.AddCompost(0.3f);
     }
     void TryUseItem(ItemObject currentItem, CustomTile tile)
     {

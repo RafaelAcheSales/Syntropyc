@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7049e6b6c86543e41a2437164d493530
+guid: e754fd873eed80a4792d4174fb044a67
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,7 +162,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Corn_0
+      name: Plpants_0
       rect:
         serializedVersion: 2
         x: 0
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a98dc20e0a05c34cb471dd76f98f61f
-      internalID: -441898290
+      spriteID: a41b89e4bfb7e1f4581b57ecb3966f8f
+      internalID: -115339941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_1
+      name: Plpants_1
       rect:
         serializedVersion: 2
         x: 16
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a4057453237df042a6d6ee19f147d0d
-      internalID: 2081929068
+      spriteID: ce768662e692db24bb5a1dc8c22e5b54
+      internalID: 1674601521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_2
+      name: Plpants_2
       rect:
         serializedVersion: 2
         x: 32
@@ -218,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e470ddf5cf13dba489edaa884966f4fa
-      internalID: -1791494714
+      spriteID: 0a5f49242b18ea34abf3d619ad804205
+      internalID: 1435949898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_3
+      name: Plpants_3
       rect:
         serializedVersion: 2
         x: 64
@@ -239,14 +239,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60d3a90e673af0248819c81f792aea45
-      internalID: 1109910663
+      spriteID: 99e308cf038ca41469a966ee1a64d751
+      internalID: -769877350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_4
+      name: Plpants_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b978a7a1870653f4784910fdaa77910e
+      internalID: 1089801830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_5
       rect:
         serializedVersion: 2
         x: 16
@@ -260,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f870818495f5f354187a07d5f1129bb5
-      internalID: -923101272
+      spriteID: 202672f3597feb340ba9c2be46bc273f
+      internalID: -304023501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_5
+      name: Plpants_6
       rect:
         serializedVersion: 2
         x: 32
@@ -281,14 +302,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8086254b8a6a7e4f86c9efe2f25c4c6
-      internalID: -881730935
+      spriteID: 87ce4d2331af8e049a7f2eb4c46c8751
+      internalID: 11703586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_6
+      name: Plpants_7
       rect:
         serializedVersion: 2
         x: 48
@@ -302,14 +323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 699627a34e3de8641bb667c5c2ad7e24
-      internalID: -1414760181
+      spriteID: a4015759f7443d9418ad0e087ef1bc46
+      internalID: 945889119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_7
+      name: Plpants_8
       rect:
         serializedVersion: 2
         x: 64
@@ -323,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97485212cf8ed0a43ba978b98d174751
-      internalID: 1127054566
+      spriteID: dfc511c752c304e44864d69e6d87d260
+      internalID: -1291340546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_8
+      name: Plpants_9
       rect:
         serializedVersion: 2
         x: 80
@@ -344,14 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71570b3b1cbc37d45a2f16d5f06df274
-      internalID: -805887084
+      spriteID: 567a1762833e39643ade830fceaf61b3
+      internalID: 1904446018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_9
+      name: Plpants_10
       rect:
         serializedVersion: 2
         x: 32
@@ -365,14 +386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d473d6d8482fe894fa99aadcc0aa8be2
-      internalID: -2062458142
+      spriteID: 06270bfa827d3c84b9c59a9f04e354f6
+      internalID: -1209327913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_10
+      name: Plpants_11
       rect:
         serializedVersion: 2
         x: 48
@@ -386,35 +407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8808c22043eca648a12d8f4d9273a40
-      internalID: -1024382551
+      spriteID: 9cb99720b29328944afd3aa980264861
+      internalID: -1491520462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_11
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 464
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3210c20e5b7a79b468e24d75cc20e5f4
-      internalID: 2025660304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Corn_12
+      name: Plpants_12
       rect:
         serializedVersion: 2
         x: 80
@@ -428,14 +428,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f73aa1080e385441be78b2c0cce7757
-      internalID: 184394927
+      spriteID: 892f59e41ab7df14cbfe44068486954e
+      internalID: 1197996781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_13
+      name: Plpants_13
       rect:
         serializedVersion: 2
         x: 96
@@ -449,14 +449,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1525f2010c85a6e44816d82d75eefbc1
-      internalID: -1031671474
+      spriteID: b1871c7afa17f27418cdf1a2963bd158
+      internalID: -1642452076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Corn_14
+      name: Plpants_14
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 448
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adadd845e7fb66e40b46072d9c035e38
+      internalID: 1534510741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_15
       rect:
         serializedVersion: 2
         x: 496
@@ -470,8 +491,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d159862c2848a2498edecb3d3403f7c
-      internalID: 1553454374
+      spriteID: 6c19035215e4c9a4e9128beb87688ab9
+      internalID: -1174154351
       vertices: []
       indices: 
       edges: []
@@ -487,21 +508,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Corn_0: -441898290
-      Corn_1: 2081929068
-      Corn_10: -1024382551
-      Corn_11: 2025660304
-      Corn_12: 184394927
-      Corn_13: -1031671474
-      Corn_14: 1553454374
-      Corn_2: -1791494714
-      Corn_3: 1109910663
-      Corn_4: -923101272
-      Corn_5: -881730935
-      Corn_6: -1414760181
-      Corn_7: 1127054566
-      Corn_8: -805887084
-      Corn_9: -2062458142
+      Plpants_0: -115339941
+      Plpants_1: 1674601521
+      Plpants_10: -1209327913
+      Plpants_11: -1491520462
+      Plpants_12: 1197996781
+      Plpants_13: -1642452076
+      Plpants_14: 1534510741
+      Plpants_15: -1174154351
+      Plpants_2: 1435949898
+      Plpants_3: -769877350
+      Plpants_4: 1089801830
+      Plpants_5: -304023501
+      Plpants_6: 11703586
+      Plpants_7: 945889119
+      Plpants_8: -1291340546
+      Plpants_9: 1904446018
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

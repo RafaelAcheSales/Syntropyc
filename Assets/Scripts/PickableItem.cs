@@ -17,6 +17,11 @@ public class PickableItem : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentCollider = GetComponent<Collider2D>();
+
+    }
+
+    public void OnEnable()
+    {
         spriteRenderer.sprite = item.sprite;
     }
 

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum PlantStage
 {
-    StageOne,
-    StageTwo,
-    StageThree
+    StageOne = 0,
+    StageTwo = 1,
+    StageThree = 2
 }
+
 
 public class RuntimePlant : MonoBehaviour
 {
@@ -37,9 +38,10 @@ public class RuntimePlant : MonoBehaviour
 
     public void CreateAndAddBranch(BranchType branchType, PlantaBase.PlantLayer layer, CustomTile parentTile)
     {
+        if (parentTile.IsOccupied((int)layer) && layer != PlantaBase.PlantLayer.Low) return;
         GameObject newBranch = Instantiate(initalBranch.gameObject, transform);
         newBranch.SetActive(true);
-        newBranch.transform.position = parentTile.transform.position;
+        newBranch.transform.position = parentTile.transform.position + new Vector3(0f, 0f, (int)layer*-0.5f);
         Branch branchComponent = newBranch.GetComponent<Branch>();
         branchComponent.SetVariables(this, branchType, layer);
         branches[layer].Add(branchComponent);
@@ -72,8 +74,24 @@ public class RuntimePlant : MonoBehaviour
             enableGrowth = false;
         }
         CheckDevelopmentThreshold();
+        UpdatePhotosynthesisScore();
     }
 
+    private void UpdatePhotosynthesisScore()
+    {
+        float averageLightScore = CalculateAverageLightScore();
+        photosynthesisScore = averageLightScore;
+    }
+    private float CalculateAverageLightScore()
+    {
+        Branch[] allBranches = GetComponentsInChildren<Branch>();
+        float totalLightScore = 0f;
+        foreach (Branch branch in allBranches)
+        {
+            totalLightScore += branch.lightScore;
+        }
+        return totalLightScore / allBranches.Length;
+    }
     private void CheckDevelopmentThreshold()
     {
         PlantStage stageIndex = (PlantStage)GetCurrentPlantStage();
@@ -87,16 +105,82 @@ public class RuntimePlant : MonoBehaviour
 
     private void GrowToNewStage()
     {
+        Debug.Log("Grow to new stage");
         //check if it plant base can grow higher
+        Debug.Log((int)plant.plantLayer + " " + (int)currentStage);
+        Debug.Log(plant.plantLayer + " " + currentStage);
         if ((int)plant.plantLayer < (int)currentStage) return;
         //gets the new stage
         GrowthStage newStage = plant.growthStages[(int)currentStage];
         //checks for colisions on CustomTile.isLayerOccupied based on adjacent tiles
         //if there is no colision, create a new branch
-        
-        
-        
-        
+        for (int i = 0; i < newStage.row0.Length; i++)
+        {
+            if (!newStage.row0[i]) continue;
+            CustomTile newTile = currentTile.GetAdjacentTile(ConvertGrowthStageRowToNeighbor(i, 0));
+            CreateAndAddBranch(BranchType.Leaf, (PlantaBase.PlantLayer)currentStage, newTile);
+        }
+        for (int i = 0; i < newStage.row1.Length; i++)
+        {
+            if (!newStage.row1[i]) continue;
+            CustomTile newTile = currentTile.GetAdjacentTile(ConvertGrowthStageRowToNeighbor(i, 1));
+            BranchType branchType = (i == 1) ? BranchType.Trunk : BranchType.Leaf;
+            CreateAndAddBranch(branchType, (PlantaBase.PlantLayer)currentStage, newTile);
+        }
+        for (int i = 0; i < newStage.row2.Length; i++)
+        {
+            if (!newStage.row2[i]) continue;
+            CustomTile newTile = currentTile.GetAdjacentTile(ConvertGrowthStageRowToNeighbor(i, 2));
+            CreateAndAddBranch(BranchType.Leaf, (PlantaBase.PlantLayer)currentStage, newTile);
+        }
 
+
+    }
+
+    public static TileNeighbor ConvertGrowthStageRowToNeighbor(int index, int rowIndex) {
+        //rowIndex 0 = row0 left side
+        //rowIndex 1 = row1 middle 
+        //rowIndex 2 = row2 right side
+        switch (rowIndex)
+        {
+            case 0:
+                switch (index)
+                {
+                    case 0:
+                        return TileNeighbor.UpLeft;
+                    case 1:
+                        return TileNeighbor.Left;
+                    case 2:
+                        return TileNeighbor.DownLeft;
+                    default:
+                        return TileNeighbor.None;
+                }
+            case 1:
+                switch (index)
+                {
+                    case 0:
+                        return TileNeighbor.Up;
+                    case 1:
+                        return TileNeighbor.Middle;
+                    case 2:
+                        return TileNeighbor.Down;
+                    default:
+                        return TileNeighbor.None;
+                }
+            case 2:
+                switch (index)
+                {
+                    case 0:
+                        return TileNeighbor.UpRight;
+                    case 1:
+                        return TileNeighbor.Right;
+                    case 2:
+                        return TileNeighbor.DownRight;
+                    default:
+                        return TileNeighbor.None;
+                }
+            default:
+                return TileNeighbor.None;
+        }
     }
 }

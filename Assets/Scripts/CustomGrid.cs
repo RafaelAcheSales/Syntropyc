@@ -25,6 +25,7 @@ public class CustomGrid : MonoBehaviour
                 Vector2 newPos = new(x - middleX, y - middleY);
                 GameObject newTile = Instantiate(tilePrefab, new Vector3(newPos.x, newPos.y, 0), Quaternion.identity);
                 newTile.transform.parent = transform;
+                newTile.name = $"Tile {x}, {y}";
                 gridDictionary.Add(newPos, newTile.GetComponent<CustomTile>());
             }
         }   

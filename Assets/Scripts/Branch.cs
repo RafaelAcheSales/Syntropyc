@@ -15,7 +15,7 @@ public class Branch : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BranchType branchType;
     private PlantaBase.PlantLayer layer;
-    
+    public float lightScore = 0f;
     public void SetVariables(RuntimePlant motherPlant, BranchType branchType, PlantaBase.PlantLayer layer)
     {
         this.motherPlant = motherPlant;
@@ -23,6 +23,7 @@ public class Branch : MonoBehaviour
         this.layer = layer;
         spriteRenderer = GetComponent<SpriteRenderer>();
         GameManager.onLayerViewToggle += ToggleBranch;
+
     }
 
     private void OnDisable()
@@ -30,10 +31,16 @@ public class Branch : MonoBehaviour
         GameManager.onLayerViewToggle -= ToggleBranch;
     }
 
-    public void ToggleBranch(PlantaBase.PlantLayer layer)
+    public void ToggleBranch(int layer)
     {
-        Debug.Log("Toggling branch to " + layer);
-        spriteRenderer.enabled = layer == this.layer;
+
+        //Debug.Log("Toggling branch to " + layer);
+        if (layer < 0)
+        {
+            spriteRenderer.enabled = true;
+            return;
+        }
+        spriteRenderer.enabled = (PlantaBase.PlantLayer)layer == this.layer;
     }
 
     private void Update()
@@ -42,6 +49,23 @@ public class Branch : MonoBehaviour
         Sprite newSprite = GetCorrectVisual();
         if (ReferenceEquals(newSprite, spriteRenderer.sprite)) return;
         spriteRenderer.sprite = newSprite;
+        UpdateLightScore();
+    }
+
+    private void UpdateLightScore()
+    {
+
+        float score = 0f;
+        //if other layes are occupied on tile , light score is 1
+        List<PlantaBase.PlantLayer> TheOtherLayers = GameManager.LayerSetSubtraction(layer);
+        foreach (PlantaBase.PlantLayer layer in TheOtherLayers)
+        {
+            if (motherPlant.currentTile.IsOccupied((int)layer))
+            {
+                score += 0.5f;
+            }
+        }
+        lightScore = score;
 
     }
 

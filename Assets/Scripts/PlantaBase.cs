@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlantaBase : ScriptableObject
 {
     public  enum PlantLayer {
-        High, 
-        Medium,
-        Low
+        Low = 0,
+        Medium = 1,
+        High = 2
     }
     public string plantName;
     public float maximunTimeToGrow;

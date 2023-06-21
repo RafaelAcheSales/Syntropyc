@@ -25,7 +25,7 @@ public class InventoryObject : ScriptableObject
 
         if (item != null && newItem != item)
         {
-            Debug.LogWarning("Cannot add a different item to a non-empty slot.");
+            //Debug.LogWarning("Cannot add a different item to a non-empty slot.");
             return false;
         }
 

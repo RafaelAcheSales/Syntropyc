@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantName: Milho
   maximunTimeToGrow: 18
-  plantLayer: 0
+  plantLayer: 1
   plantPrefabPath: Plant
   stageOneVisual:
-  - {fileID: -1414760181, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  - {fileID: 945889119, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   - {fileID: 0}
   stageTwoVisual:
-  - {fileID: 1127054566, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  - {fileID: -1291340546, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   - {fileID: 0}
   stageThreeVisual:
-  - {fileID: -805887084, guid: 7049e6b6c86543e41a2437164d493530, type: 3}
+  - {fileID: 1904446018, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   - {fileID: 0}
   growthStages:
   - row0: 000000
@@ -31,7 +31,7 @@ MonoBehaviour:
     row2: 000000
   - row0: 000000
     row1: 000100
-    row2: 000100
+    row2: 000000
   - row0: 000000
     row1: 000100
     row2: 000000
