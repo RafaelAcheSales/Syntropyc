@@ -40,10 +40,11 @@ public class RuntimePlant : MonoBehaviour
     {
         if (parentTile.IsOccupied((int)layer) && layer != PlantaBase.PlantLayer.Low) return;
         GameObject newBranch = Instantiate(initalBranch.gameObject, transform);
+        Branch branchComponent = newBranch.GetComponent<Branch>();
+        branchComponent.SetVariables(this, branchType, layer, parentTile);
+        newBranch.name = branchType.ToString() + " " + layer.ToString();
         newBranch.SetActive(true);
         newBranch.transform.position = parentTile.transform.position + new Vector3(0f, 0f, (int)layer*-0.5f);
-        Branch branchComponent = newBranch.GetComponent<Branch>();
-        branchComponent.SetVariables(this, branchType, layer);
         branches[layer].Add(branchComponent);
         parentTile.SetOccupied((int) layer, true);
     }
@@ -63,18 +64,23 @@ public class RuntimePlant : MonoBehaviour
         int stageIndex = ExtensionMethods.MapFloatToIntInterval(GetDevelopmentPercentage(), 0f, 1f, 0, 2);
         return stageIndex;
     }
+    private void Update()
+    {
+        UpdatePhotosynthesisScore();
+    }
 
     public void DevelopPlant(float tileSyntropy)
     {
-        if (!enableGrowth) return;
-        currentDevelopment += Time.deltaTime;
-        if (currentDevelopment >= timeToGrow(tileSyntropy))
+        if (enableGrowth)
         {
-            currentDevelopment = timeToGrow(tileSyntropy);
-            enableGrowth = false;
+            currentDevelopment += Time.deltaTime;
+            if (currentDevelopment >= timeToGrow(tileSyntropy))
+            {
+                currentDevelopment = timeToGrow(tileSyntropy);
+                enableGrowth = false;
+            }
+            CheckDevelopmentThreshold();
         }
-        CheckDevelopmentThreshold();
-        UpdatePhotosynthesisScore();
     }
 
     private void UpdatePhotosynthesisScore()
@@ -84,13 +90,17 @@ public class RuntimePlant : MonoBehaviour
     }
     private float CalculateAverageLightScore()
     {
-        Branch[] allBranches = GetComponentsInChildren<Branch>();
+        Branch[] allBranches = GetComponentsInChildren<Branch>(includeInactive: false);
+        //Debug.Log("Found " + allBranches.Length + " branches");
         float totalLightScore = 0f;
         foreach (Branch branch in allBranches)
         {
             totalLightScore += branch.lightScore;
+            //Debug.Log("Branch light score: " + branch.lightScore);
         }
-        return totalLightScore / allBranches.Length;
+        float result = totalLightScore / allBranches.Length;
+        //Debug.Log("Average light score: " + result);
+        return result;
     }
     private void CheckDevelopmentThreshold()
     {
@@ -110,6 +120,8 @@ public class RuntimePlant : MonoBehaviour
         Debug.Log((int)plant.plantLayer + " " + (int)currentStage);
         Debug.Log(plant.plantLayer + " " + currentStage);
         if ((int)plant.plantLayer < (int)currentStage) return;
+        //if upper space from current tile is occupied, return
+        if (currentTile.IsOccupied((int)currentStage)) return;
         //gets the new stage
         GrowthStage newStage = plant.growthStages[(int)currentStage];
         //checks for colisions on CustomTile.isLayerOccupied based on adjacent tiles

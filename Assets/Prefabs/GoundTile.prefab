@@ -98,7 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syntropy: 0
-  lightLevel: 0
+  compost: 0
+  water: 0
+  compoundLostPerSecond: 0.005
+  waterLostPerSecond: 0.01
   sprites:
   - {fileID: -1655978095, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
   - {fileID: 1037886220, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
+  - {fileID: -1426869148, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
+  - {fileID: 225920554, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
+  - {fileID: 225920554, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
+  layerIsOccupied: 000000

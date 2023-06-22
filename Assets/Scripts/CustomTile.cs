@@ -47,6 +47,7 @@ public class CustomTile : MonoBehaviour
         }
         CalculateCurrentSyntropy();
         LoseWaterAndCompost();
+        UpdateSprite();
 
     }
     private void CalculateCurrentSyntropy()
@@ -126,6 +127,11 @@ public class CustomTile : MonoBehaviour
     {
         if (plant == null) return 0f;
         return plant.photosynthesisScore;
+    }
+
+    public void Highlight(bool state)
+    {
+        spriteRenderer.color = state ? Color.green : Color.white;
     }
 
     public bool TryPlant(SeedObject seed)

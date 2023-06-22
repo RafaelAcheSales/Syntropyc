@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] debugItems;
     private Vector2 offset;
     private bool enableTooltip = true;
+    private CustomTile highlightedTile;
 
     private int currentViewLayer = -1;
 
@@ -79,10 +80,10 @@ public class GameManager : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         
         List<SeedObject> debugSeeds = Resources.LoadAll<SeedObject>("Items/Seeds").ToList();
-        Debug.Log("debugSeeds: " + debugSeeds.Count);
+        //Debug.Log("debugSeeds: " + debugSeeds.Count);
         foreach (GameObject item in debugItems)
         {
-            Debug.Log("item: " + item.name);
+            //Debug.Log("item: " + item.name);
             if (item.TryGetComponent<PickableItem>(out PickableItem pickableItem))
             {
                 for (int i = 0; i < amountOfEachDebugItem; i++)
@@ -113,10 +114,21 @@ public class GameManager : MonoBehaviour
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(tooltipPrefab.transform.parent as RectTransform, Input.mousePosition, null, out Vector2 localPoint);
             ShowTooltipAt(localPoint, tile.GetFormattedInfo());
+            if (!ReferenceEquals(tile, highlightedTile) && highlightedTile != null)
+            {
+                highlightedTile.Highlight(false);
+            }
+            tile.Highlight(true);
+            highlightedTile = tile;
         }
         else
         {
             HideTooltip();
+            if (highlightedTile != null)
+            {
+                highlightedTile.Highlight(false);
+                highlightedTile = null;
+            }
         }
     }
 
@@ -199,14 +211,14 @@ public class GameManager : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.F)) return;
         if (tile == null) return;
-        tile.AddWater(0.3f);
+        tile.AddWater(1f);
         
     }
     void HanleCompostDebug(CustomTile tile)
     {
         if (!Input.GetKeyDown(KeyCode.C)) return;
         if (tile == null) return;
-        tile.AddCompost(0.3f);
+        tile.AddCompost(1f);
     }
     void TryUseItem(ItemObject currentItem, CustomTile tile)
     {
