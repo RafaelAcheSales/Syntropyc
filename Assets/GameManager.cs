@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Tilemaps;
 using UnityEngine.WSA;
 
@@ -12,16 +13,20 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public CustomGrid grid;
     public Camera mainCamera;
+    public PlayableDirector playableDirector;
     public GameObject tooltipPrefab;
     public GameObject inventoryUI;
     public GameObject player;
     public PlayerInventory playerInventory;
+    public RectTransform globalSyntropyBar;
+    public AudioSource audioSource;
+    public AudioClip endGameSound;
     public int amountOfEachDebugItem = 5;
     public GameObject[] debugItems;
     private Vector2 offset;
     private bool enableTooltip = true;
     private CustomTile highlightedTile;
-
+    private bool updateEnabled = true;
     private int currentViewLayer = -1;
 
     // event delegate to hide/show branches for the currentViewLayer
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerInventory = player.GetComponent<PlayerInventory>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -64,6 +70,14 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (updateEnabled)
+        {
+            UpdateGame();
+        }
+
+    }
+    void UpdateGame()
+    {
         CustomTile tile = GetTileAtMousePos();
         ShowTileInfo(tile);
         CheckToggleTooltip();
@@ -73,7 +87,36 @@ public class GameManager : MonoBehaviour
         HandleWater(tile);
         HanleCompostDebug(tile);
         Branch.allBranches.ForEach(branch => branch.UpdateBranch());
+        UpdateGlobalSyntropyBar();
         //HandleCut();
+    }
+    void UpdateGlobalSyntropyBar()
+    {
+        float syntropy = grid.GlobalSyntropyPercentage();
+        globalSyntropyBar.localScale = new Vector3(syntropy, 1, 1);
+        if (syntropy >= 1)
+        {
+            EndGame();
+        }
+    }
+
+    void EndGame()
+    {
+        Debug.Log("Game Over");
+        updateEnabled = false;
+        playableDirector.Play();
+        //set inactive all canvas on scene
+        Canvas[] canvas = FindObjectsOfType<Canvas>();
+        foreach (Canvas c in canvas)
+        {
+            c.gameObject.SetActive(false);
+        }
+        audioSource.PlayOneShot(endGameSound);
+    }
+    public void CloseGame()
+    {
+        Debug.Log("Game Closed");
+        UnityEngine.Application.Quit();
     }
 
     void SpawnDebugItems()

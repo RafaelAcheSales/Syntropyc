@@ -131,8 +131,7 @@ public class CustomTile : MonoBehaviour
 
     public void Highlight(bool state)
     {
-        spriteRenderer.color = state ? Color.green : Color.white;
-    }
+        spriteRenderer.color = state ? new Color(0.2f, 0.8f, 0.16f, 1f) : Color.white;    }
 
     public bool TryPlant(SeedObject seed)
     {

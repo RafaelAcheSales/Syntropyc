@@ -80,7 +80,6 @@ public class InventoryObject : ScriptableObject
         }
 
         // Code to drop the items goes here
-
         this.item = null;
         this.amount = 0;
         GameObject oldPrefab = this.prefab;

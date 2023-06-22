@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class CustomGrid : MonoBehaviour
 {
     public int sizeX, sizeY;
     //public int cellSize; //pixels
     public GameObject tilePrefab;
+    public int minimumTilesToFinish = 60;
     private Dictionary<Vector2, CustomTile> gridDictionary = new();
     private void Start()
     {
@@ -41,6 +43,16 @@ public class CustomGrid : MonoBehaviour
         {
             return null;
         }
+    }
+    // from 0f to 1f
+    public float GlobalSyntropyPercentage()
+    {
+        float totalSyntropy = 0;
+        foreach (KeyValuePair<Vector2, CustomTile> item in gridDictionary)
+        {
+            totalSyntropy += item.Value.syntropy;
+        }
+        return totalSyntropy / minimumTilesToFinish;
     }
     
 }
