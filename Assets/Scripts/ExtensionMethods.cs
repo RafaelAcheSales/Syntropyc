@@ -14,16 +14,16 @@ public static class ExtensionMethods
         return Mathf.FloorToInt((value - from1) / (to1 - from1) * (to2 - from2) + from2);
     }
     //creates editor action to print object to console
-    [UnityEditor.MenuItem("Debug/PrintObject")]
-    public static void DumpBranchToConsole()
-    {
-        var obj = Selection.activeObject as GameObject;
-        if (obj == null || !obj.TryGetComponent(out Branch branch))
-        {
-            Debug.Log("No branch selected");
-            return;
-        }
-        Debug.Log("BranchLightScore: " + branch.lightScore);
-        //Debug.Log(branch.
-    }
+    //[MenuItem("Debug/PrintObject")]
+    //public static void DumpBranchToConsole()
+    //{
+    //    var obj = Selection.activeObject as GameObject;
+    //    if (obj == null || !obj.TryGetComponent(out Branch branch))
+    //    {
+    //        Debug.Log("No branch selected");
+    //        return;
+    //    }
+    //    Debug.Log("BranchLightScore: " + branch.lightScore);
+    //    //Debug.Log(branch.
+    //}
 }

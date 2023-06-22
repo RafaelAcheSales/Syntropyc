@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,8 +64,8 @@ public class GameManager : MonoBehaviour
         offset = new Vector2(150, 150);
 
 #if UNITY_EDITOR
-        SpawnDebugItems();
 #endif
+        SpawnDebugItems();
     }
     private void Update()
     {

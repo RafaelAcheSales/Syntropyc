@@ -270,8 +270,8 @@ TextureImporter:
       name: Plpants_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 480
+        x: 112
+        y: 496
         width: 16
         height: 16
       alignment: 0
@@ -291,8 +291,8 @@ TextureImporter:
       name: Plpants_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 480
+        x: 128
+        y: 496
         width: 16
         height: 16
       alignment: 0
@@ -312,8 +312,8 @@ TextureImporter:
       name: Plpants_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 480
+        x: 144
+        y: 496
         width: 16
         height: 16
       alignment: 0
@@ -333,7 +333,7 @@ TextureImporter:
       name: Plpants_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 480
         width: 16
         height: 16
@@ -354,7 +354,7 @@ TextureImporter:
       name: Plpants_9
       rect:
         serializedVersion: 2
-        x: 80
+        x: 32
         y: 480
         width: 16
         height: 16
@@ -375,8 +375,8 @@ TextureImporter:
       name: Plpants_10
       rect:
         serializedVersion: 2
-        x: 32
-        y: 464
+        x: 48
+        y: 480
         width: 16
         height: 16
       alignment: 0
@@ -396,8 +396,8 @@ TextureImporter:
       name: Plpants_11
       rect:
         serializedVersion: 2
-        x: 48
-        y: 464
+        x: 64
+        y: 480
         width: 16
         height: 16
       alignment: 0
@@ -418,7 +418,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 464
+        y: 480
         width: 16
         height: 16
       alignment: 0
@@ -438,8 +438,8 @@ TextureImporter:
       name: Plpants_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 464
+        x: 112
+        y: 480
         width: 16
         height: 16
       alignment: 0
@@ -459,8 +459,8 @@ TextureImporter:
       name: Plpants_14
       rect:
         serializedVersion: 2
-        x: 80
-        y: 448
+        x: 128
+        y: 480
         width: 16
         height: 16
       alignment: 0
@@ -480,8 +480,8 @@ TextureImporter:
       name: Plpants_15
       rect:
         serializedVersion: 2
-        x: 496
-        y: 0
+        x: 144
+        y: 480
         width: 16
         height: 16
       alignment: 0
@@ -493,6 +493,174 @@ TextureImporter:
       bones: []
       spriteID: 6c19035215e4c9a4e9128beb87688ab9
       internalID: -1174154351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9c0c6479302524d87a3f662c2ed243
+      internalID: 1338708841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8228ebe1a9c5ff34c8bfc77c7576a0ac
+      internalID: 1578961657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_18
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e405f8f1c10d4164583617dab45bb490
+      internalID: 834017776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f0dd06445f32545b5435b11ea5e47a
+      internalID: 1190570069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_20
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f542485b792ae064387d4e87ad6792d7
+      internalID: -1553922735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1846c538e7eafb45b19d6f16a746deb
+      internalID: -444618453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_22
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 448
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c66cbf42420d2ce49b94d049a3b5f8ed
+      internalID: 177819767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plpants_23
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be23e3682dc3e849808d2fe7d1f91c9
+      internalID: -421398038
       vertices: []
       indices: 
       edges: []
@@ -516,7 +684,15 @@ TextureImporter:
       Plpants_13: -1642452076
       Plpants_14: 1534510741
       Plpants_15: -1174154351
+      Plpants_16: 1338708841
+      Plpants_17: 1578961657
+      Plpants_18: 834017776
+      Plpants_19: 1190570069
       Plpants_2: 1435949898
+      Plpants_20: -1553922735
+      Plpants_21: -444618453
+      Plpants_22: 177819767
+      Plpants_23: -421398038
       Plpants_3: -769877350
       Plpants_4: 1089801830
       Plpants_5: -304023501
