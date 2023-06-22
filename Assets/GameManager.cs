@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         HandleClick(tile);
         HandleWater(tile);
         HanleCompostDebug(tile);
+        Branch.allBranches.ForEach(branch => branch.UpdateBranch());
         //HandleCut();
     }
 

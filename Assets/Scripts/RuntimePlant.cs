@@ -67,8 +67,18 @@ public class RuntimePlant : MonoBehaviour
     private void Update()
     {
         UpdatePhotosynthesisScore();
+        //CallUpdateOnBranches();
     }
-
+    void CallUpdateOnBranches()
+    {
+        foreach (KeyValuePair<PlantaBase.PlantLayer, List<Branch>> layer in branches)
+        {
+            foreach (Branch branch in layer.Value)
+            {
+                branch.UpdateBranch();
+            }
+        }
+    }
     public void DevelopPlant(float tileSyntropy)
     {
         if (enableGrowth)

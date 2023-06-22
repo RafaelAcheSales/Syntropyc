@@ -18,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < inventory.amount; i++)
         {
             Vector3 offset = GameManager.instance.GetMouseScreenPos().normalized;
+            offset.z = 0f;
             droppedItem = Instantiate(inventory.prefab, transform.position + offset, Quaternion.identity);
             droppedItem.SetActive(true);
             droppedItem.GetComponent<PickableItem>().item = inventory.item;

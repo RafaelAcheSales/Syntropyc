@@ -11,12 +11,18 @@ public enum BranchType
 [RequireComponent(typeof(SpriteRenderer))]
 public class Branch : MonoBehaviour
 {
+    public static List<Branch> allBranches = new List<Branch>();
     private RuntimePlant motherPlant;
     private SpriteRenderer spriteRenderer;
     private BranchType branchType;
     private PlantaBase.PlantLayer layer;
     private CustomTile parentTile;
     public float lightScore = 0f;
+
+    private void OnEnable()
+    {
+        allBranches.Add(this);
+    }
     public void SetVariables(RuntimePlant motherPlant, BranchType branchType, PlantaBase.PlantLayer layer, CustomTile parentTile)
     {
         this.motherPlant = motherPlant;
@@ -31,6 +37,7 @@ public class Branch : MonoBehaviour
     private void OnDisable()
     {
         GameManager.onLayerViewToggle -= ToggleBranch;
+        allBranches.Remove(this);
     }
 
     public void ToggleBranch(int layer)
@@ -45,17 +52,15 @@ public class Branch : MonoBehaviour
         spriteRenderer.enabled = (PlantaBase.PlantLayer)layer == this.layer;
     }
 
-    private void FixedUpdate()
+    public void UpdateBranch()
     {
-
+        UpdateLightScore();
         if (motherPlant != null)
         {
             Sprite newSprite = GetCorrectVisual();
             if (ReferenceEquals(newSprite, spriteRenderer.sprite)) return;
             spriteRenderer.sprite = newSprite;
         }
-        print(Time.frameCount);
-        //UpdateLightScore();
     }
 
     private void UpdateLightScore()

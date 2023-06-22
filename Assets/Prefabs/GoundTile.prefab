@@ -100,8 +100,8 @@ MonoBehaviour:
   syntropy: 0
   compost: 0
   water: 0
-  compoundLostPerSecond: 0.005
-  waterLostPerSecond: 0.01
+  compoundLostPerSecond: 0.0001
+  waterLostPerSecond: 0.001
   sprites:
   - {fileID: -1655978095, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
   - {fileID: 1037886220, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
