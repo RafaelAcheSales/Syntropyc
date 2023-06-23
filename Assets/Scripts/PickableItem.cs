@@ -23,6 +23,8 @@ public class PickableItem : MonoBehaviour
     public void OnEnable()
     {
         spriteRenderer.sprite = item.sprite;
+        string newName = item.itemName+"_"+Random.Range(0, 1000);
+        gameObject.name = newName;
     }
 
 

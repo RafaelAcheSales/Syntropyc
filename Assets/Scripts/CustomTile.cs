@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -26,21 +29,36 @@ public class CustomTile : MonoBehaviour
     public float water = 0f;
     public float compoundLostPerSecond = 0.005f;
     public float waterLostPerSecond = 0.01f;
+    public bool isWaterTile = false;
+    public bool started = false;
+    public bool hasGrassOnIt = false;
+    public float probabilityOfGrowingGrassPerSecond = 0.01f;
+    public GameObject grassObj;
+    public GameObject currentGrass = null;
 
+    public AnimatorController waterAnimator;
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
     
     private RuntimePlant plant;
 
     public bool[] layerIsOccupied = new bool[3] { false, false, false };
-    void Start()
+    public void StartTile()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        grassObj = Resources.Load<GameObject>("Grass");
         UpdateSprite();
+        if (isWaterTile)
+        {
+            layerIsOccupied[0] = true;
+        }
+        started = true;
 
     }
+
     private void Update()
     {
+        if (isWaterTile || !started) return;
         if (plant != null)
         {
             plant.DevelopPlant(syntropy);
@@ -48,7 +66,22 @@ public class CustomTile : MonoBehaviour
         CalculateCurrentSyntropy();
         LoseWaterAndCompost();
         UpdateSprite();
+        GrowGrass();
 
+    }
+    public void GrowGrass()
+    {
+        float random = UnityEngine.Random.Range(0f, 1f);
+        bool allLayersFree = !layerIsOccupied[0] && !layerIsOccupied[1] && !layerIsOccupied[2];
+        if (random <= probabilityOfGrowingGrassPerSecond && !hasGrassOnIt && allLayersFree)
+        {
+            Debug.Log("Growing grass");
+            GameObject newGrass = Instantiate(grassObj, transform.position, Quaternion.identity);
+            newGrass.transform.parent = transform;
+            hasGrassOnIt = true;
+            currentGrass = newGrass;
+            layerIsOccupied[0] = true;
+        }
     }
     private void CalculateCurrentSyntropy()
     {
@@ -67,6 +100,14 @@ public class CustomTile : MonoBehaviour
     }
     public void UpdateSprite()
     {
+        if (isWaterTile)
+        {
+            gameObject.AddComponent<Animator>();
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = waterAnimator;
+            animator.speed = 0.4f;
+            return;
+        }
         float remapped = ExtensionMethods.Remap(syntropy, 0f, 1f, 0f, sprites.Length);
         if (remapped >= sprites.Length)
         {
@@ -131,7 +172,8 @@ public class CustomTile : MonoBehaviour
 
     public void Highlight(bool state)
     {
-        spriteRenderer.color = state ? new Color(0.2f, 0.8f, 0.16f, 1f) : Color.white;    }
+        spriteRenderer.color = state ? new Color(0.2f, syntropy, 0.16f, 1f) : Color.white;    
+    }
 
     public bool TryPlant(SeedObject seed)
     {
@@ -184,5 +226,14 @@ public class CustomTile : MonoBehaviour
         }
         Vector2Int newCoords = new Vector2Int((int)transform.position.x, (int)transform.position.y) + offset;
         return GameManager.instance.grid.GetTile(newCoords);
+    }
+
+    public bool TryCutGrass()
+    {
+        if (!hasGrassOnIt) return false;
+        Destroy(currentGrass);
+        hasGrassOnIt = false;
+        layerIsOccupied[0] = false;
+        return true;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Il2Cpp;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Tilemaps;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryUI;
     public GameObject player;
     public PlayerInventory playerInventory;
+    public PlayerActionAnimator playerActionAnimator;
     public RectTransform globalSyntropyBar;
     public AudioSource audioSource;
     public AudioClip endGameSound;
@@ -27,6 +29,10 @@ public class GameManager : MonoBehaviour
     private CustomTile highlightedTile;
     private bool updateEnabled = true;
     private int currentViewLayer = -1;
+    public float waterReserve = 10f;
+    public float waterReserveMax = 10f;
+    public float compostReserve = 10f;
+    public float compostReserveMax = 10f;
 
     // event delegate to hide/show branches for the currentViewLayer
     public delegate void OnLayerViewToggle(int layer);
@@ -51,7 +57,9 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        playerInventory = player.GetComponent<PlayerInventory>();
+        playerInventory = player.GetComponentInChildren<PlayerInventory>();
+        playerActionAnimator = player.GetComponentInChildren<PlayerActionAnimator>();
+        playerInventory.enabled = false;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -62,10 +70,17 @@ public class GameManager : MonoBehaviour
         grid = FindObjectOfType<CustomGrid>();
 
         offset = new Vector2(150, 150);
+        StartCoroutine(EnableInventory());
 
 #if UNITY_EDITOR
 #endif
         SpawnDebugItems();
+    }
+
+    IEnumerator EnableInventory()
+    {
+        yield return new WaitForSeconds(2f);
+        playerInventory.enabled = true;
     }
     private void Update()
     {
@@ -87,7 +102,7 @@ public class GameManager : MonoBehaviour
         HanleCompostDebug(tile);
         Branch.allBranches.ForEach(branch => branch.UpdateBranch());
         UpdateGlobalSyntropyBar();
-        //HandleCut();
+        HandleCut(tile);
     }
     void UpdateGlobalSyntropyBar()
     {
@@ -98,6 +113,7 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
+
 
     void EndGame()
     {
@@ -201,7 +217,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            player.GetComponent<PlayerInventory>().DropItems();
+            playerInventory.DropItems();
         }
     }
 
@@ -254,14 +270,46 @@ public class GameManager : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.F)) return;
         if (tile == null) return;
-        tile.AddWater(1f);
+        if (tile.isWaterTile)
+        {
+            FillWater(tile);
+        } else
+        {
+            if (waterReserve <= 0) return;
+            float valueToAdd = Mathf.Min(waterReserve, 1f);
+            tile.AddWater(valueToAdd);
+            playerActionAnimator.WaterAction();
+            waterReserve -= valueToAdd;
+            waterReserve = Mathf.Clamp(waterReserve, 0f, waterReserveMax);
+
+        }
         
+    }
+    void FillWater(CustomTile tile)
+    {
+        Debug.Log("FillWater");
+        waterReserve = waterReserveMax;
     }
     void HanleCompostDebug(CustomTile tile)
     {
+        if (compostReserve <= 0) return;
         if (!Input.GetKeyDown(KeyCode.C)) return;
         if (tile == null) return;
-        tile.AddCompost(1f);
+        float valueToAdd = Mathf.Min(compostReserve, 1f);
+        tile.AddCompost(valueToAdd);
+        compostReserve -= valueToAdd;
+        compostReserve = Mathf.Clamp(compostReserve, 0f, compostReserveMax);
+    }
+    public void FillCompost()
+    {
+
+    }
+    void HandleCut(CustomTile tile)
+    {
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        Debug.Log("HandleCut on tile: " + tile.name);
+        playerActionAnimator.ScyteAction();
+        tile.TryCutGrass();
     }
     void TryUseItem(ItemObject currentItem, CustomTile tile)
     {

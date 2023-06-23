@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0304df13bd61b5042a9f706981608900
+guid: e676897a74ef0694bb129856f77dcf04
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638230598993240511
+  platformSettingsDirtyTick: 638230595530719718
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,38 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: PlayerTop
+  - name: MovingWater_Frame_0
     originalName: 
-    pivot: {x: 0.45454547, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 34
-      width: 11
-      height: 6
-    spriteID: 1c9421d493456c743a63cb20c2dd50d0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 34}
-  - name: PlayerTop_Frame_1
-    originalName: 
-    pivot: {x: 0.45454547, y: 0.5714286}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 11
-      height: 7
-    spriteID: 45890efe0526d364bb5eac51be6bfd6a
+      width: 16
+      height: 16
+    spriteID: ef3662799e718af49a3c8f08f8b8b09e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,18 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: PlayerTop_Frame_2
+  - name: MovingWater_Frame_1
     originalName: 
-    pivot: {x: 0.45454547, y: 0.5}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 48
-      width: 11
-      height: 6
-    spriteID: d58ab907ea885164caef31f31228f053
+      y: 28
+      width: 16
+      height: 16
+    spriteID: 297a4aa2abe73ee45af47e96b2bc36b9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -178,19 +158,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 48}
-  - name: PlayerTop_Frame_3
+    uvTransform: {x: 4, y: 28}
+  - name: MovingWater_Frame_2
     originalName: 
-    pivot: {x: 0.45454547, y: 0.5714286}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 19
-      width: 11
-      height: 7
-    spriteID: b80d818926512f5408a79993a1ddb626
+      x: 28
+      y: 4
+      width: 16
+      height: 16
+    spriteID: 7b4157e7cadf9cf4296482e080b7662f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,48 +178,68 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 19}
+    uvTransform: {x: 28, y: 4}
+  - name: MovingWater_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 28
+      y: 28
+      width: 16
+      height: 16
+    spriteID: f4db39d16a24d564b8ab0eff0c720480
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 28, y: 28}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -226489378
-    name: PlayerTop
+    guid: 736475245
+    name: MovingWater
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: PlayerTop_Frame_0
+    - name: MovingWater_Frame_0
       frameIndex: 0
       cellRect:
-        x: 3
-        y: 5
-        width: 11
-        height: 6
-      spriteId: 1c9421d493456c743a63cb20c2dd50d0
-    - name: PlayerTop_Frame_1
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: ef3662799e718af49a3c8f08f8b8b09e
+    - name: MovingWater_Frame_1
       frameIndex: 1
       cellRect:
-        x: 3
-        y: 4
-        width: 11
-        height: 7
-      spriteId: 45890efe0526d364bb5eac51be6bfd6a
-    - name: PlayerTop_Frame_2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: 297a4aa2abe73ee45af47e96b2bc36b9
+    - name: MovingWater_Frame_2
       frameIndex: 2
       cellRect:
-        x: 3
-        y: 5
-        width: 11
-        height: 6
-      spriteId: d58ab907ea885164caef31f31228f053
-    - name: PlayerTop_Frame_3
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: 7b4157e7cadf9cf4296482e080b7662f
+    - name: MovingWater_Frame_3
       frameIndex: 3
       cellRect:
-        x: 3
-        y: 4
-        width: 11
-        height: 7
-      spriteId: b80d818926512f5408a79993a1ddb626
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: f4db39d16a24d564b8ab0eff0c720480
     linkedCells: []
     parentIndex: -1
   platformSettings:

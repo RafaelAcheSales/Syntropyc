@@ -6,7 +6,6 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
     public ItemObject item;
-    public GameObject prefab;
     public int amount;
 
     public bool AddItem(ItemObject newItem, int amount, GameObject itemPrefab)
@@ -25,13 +24,17 @@ public class InventoryObject : ScriptableObject
 
         if (item != null && newItem != item)
         {
-            //Debug.LogWarning("Cannot add a different item to a non-empty slot.");
+            
             return false;
         }
 
+
+
         this.item = newItem;
         this.amount += amount;
-        this.prefab = itemPrefab;
+        //Debug.Log("Added " + amount + " " + newItem.name + " to inventory. Total: " + this.amount);
+        Destroy(itemPrefab);
+
         return true;
     }
 
@@ -62,13 +65,11 @@ public class InventoryObject : ScriptableObject
         }
 
         this.amount -= amount;
-        GameObject oldPrefab = this.prefab;
         if (this.amount == 0)
         {
             this.item = null;
-            this.prefab = null;
         }
-        return oldPrefab;
+        return null;
     }
 
     public GameObject DropItems()
@@ -82,8 +83,6 @@ public class InventoryObject : ScriptableObject
         // Code to drop the items goes here
         this.item = null;
         this.amount = 0;
-        GameObject oldPrefab = this.prefab;
-        this.prefab = null;
-        return oldPrefab;
+        return null;
     }
 }

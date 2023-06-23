@@ -17,13 +17,14 @@ public class AutoUpdateInventory : MonoBehaviour
 
     private void Start()
     {
-        playerInventory = GameManager.instance.player.GetComponent<PlayerInventory>();
+        playerInventory = GameManager.instance.playerInventory;
         defaultSprite = itemImage.sprite;
         defaultName = itemName.text;
     }
 
     private void Update()
     {
+        if (!playerInventory.enabled) return;
         if (playerInventory.inventory.item == null)
         {
             itemImage.sprite = defaultSprite;

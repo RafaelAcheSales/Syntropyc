@@ -33,6 +33,7 @@ public class GridMovement : MonoBehaviour
 
         // normalize the vector so that diagonal movement isn't faster
         direction.Normalize();
+        GameManager.instance.playerActionAnimator.SetSpeed(direction.magnitude);
 
         // if there is no input, don't move
         if (direction == Vector2.zero) return;

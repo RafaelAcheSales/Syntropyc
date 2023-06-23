@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  prefab: {fileID: 0}
   amount: 0

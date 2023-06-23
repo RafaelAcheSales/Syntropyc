@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class CustomGrid : MonoBehaviour
 {
     public int sizeX, sizeY;
     //public int cellSize; //pixels
     public GameObject tilePrefab;
     public int minimumTilesToFinish = 60;
+    public float probabilityOfWaterTile = 0.1f;
     private Dictionary<Vector2, CustomTile> gridDictionary = new();
     private void Start()
     {
@@ -28,7 +29,15 @@ public class CustomGrid : MonoBehaviour
                 GameObject newTile = Instantiate(tilePrefab, new Vector3(newPos.x, newPos.y, 0), Quaternion.identity);
                 newTile.transform.parent = transform;
                 newTile.name = $"Tile {x}, {y}";
-                gridDictionary.Add(newPos, newTile.GetComponent<CustomTile>());
+                CustomTile newTileScript = newTile.GetComponent<CustomTile>();
+                gridDictionary.Add(newPos, newTileScript);
+                float random = Random.Range(0f, 1f);
+                if (random <= probabilityOfWaterTile)
+                {
+                    newTileScript.isWaterTile = true;
+                    //Debug.Log($"Tile {x}, {y} is water");
+                }
+                newTileScript.StartTile();
             }
         }   
     }

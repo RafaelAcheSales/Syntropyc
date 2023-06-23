@@ -121,7 +121,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Plpants
     originalName: 
-    pivot: {x: 0.496063, y: 0}
+    pivot: {x: 0.496063, y: 0.0019493178}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -129,7 +129,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 508
-      height: 512
+      height: 513
     spriteID: e500a9fb11ef1e34fbb80b551740aaab
     spriteBone: []
     spriteOutline: []
@@ -138,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 0, y: 4}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -151,10 +151,10 @@ ScriptedImporter:
     - name: Plpants
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 4
+        y: -1
+        width: 508
+        height: 513
       spriteId: e500a9fb11ef1e34fbb80b551740aaab
     linkedCells: []
     parentIndex: -1
