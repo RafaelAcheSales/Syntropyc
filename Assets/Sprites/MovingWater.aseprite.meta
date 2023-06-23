@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: e676897a74ef0694bb129856f77dcf04
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: MovingWater_Clip
+    second: {fileID: 7400000, guid: 540afc0ba5d3e8846b8e706b236b84e6, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -95,7 +100,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638230595530719718
+  platformSettingsDirtyTick: 638230831457700764
   textureAssetName: 
   singleSpriteImportData:
   - name: 

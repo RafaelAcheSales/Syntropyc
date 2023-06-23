@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8435402862540095861}
   - component: {fileID: 1671796615392167145}
   - component: {fileID: 652614208041964808}
+  - component: {fileID: 4727527329488179959}
   m_Layer: 0
   m_Name: GoundTile
   m_TagString: Untagged
@@ -100,11 +101,16 @@ MonoBehaviour:
   syntropy: 0
   compost: 0
   water: 0
-  compoundLostPerSecond: 0.001
-  waterLostPerSecond: 0.01
+  compoundLostPerSecond: 0.0001
+  waterLostPerSecond: 0.001
   isWaterTile: 0
   started: 0
-  waterAnimator: {fileID: 9100000, guid: f7bf9c9af9b661b4ebe2e12bac4144ef, type: 2}
+  hasGrassOnIt: 0
+  probabilityOfGrowingGrassPerSecond: 0.0008
+  grassObj: {fileID: 0}
+  currentGrass: {fileID: 0}
+  waterAnimator: {fileID: 4727527329488179959}
+  waterAnimationClip: {fileID: 7400000, guid: 4f590922110efc140afdae6e5049df7d, type: 2}
   sprites:
   - {fileID: -1655978095, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
   - {fileID: 1037886220, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
@@ -114,3 +120,24 @@ MonoBehaviour:
   - {fileID: -1660334092, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
   - {fileID: -1660334092, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
   layerIsOccupied: 000000
+--- !u!95 &4727527329488179959
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665377038646867169}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0748a6d70c22dd24a8f9dcf60d4093d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

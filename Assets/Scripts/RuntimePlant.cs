@@ -83,7 +83,7 @@ public class RuntimePlant : MonoBehaviour
     {
         if (enableGrowth)
         {
-            currentDevelopment += Time.deltaTime;
+            currentDevelopment += Time.deltaTime * GameManager.instance.globalGrowMultiplier;
             if (currentDevelopment >= timeToGrow(tileSyntropy))
             {
                 currentDevelopment = timeToGrow(tileSyntropy);

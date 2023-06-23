@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23eb09f1a28c09c47b6168f664bed9bb, type: 3}
+  m_Name: BatataDoce
+  m_EditorClassIdentifier: 
+  plantName: BatataDoce
+  maximunTimeToGrow: 36
+  plantLayer: 0
+  plantPrefabPath: Plant
+  stageOneVisual:
+  - {fileID: -1553922735, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 0}
+  stageTwoVisual:
+  - {fileID: -444618453, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 0}
+  stageThreeVisual:
+  - {fileID: -444618453, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 0}
+  growthStages:
+  - row0: 000000
+    row1: 000100
+    row2: 000000
+  - row0: 000000
+    row1: 000000
+    row2: 000000
+  - row0: 000000
+    row1: 000000
+    row2: 000000

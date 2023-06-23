@@ -21,6 +21,7 @@ public class PlayerInventory : MonoBehaviour
         if (!enabled) return;
         //Debug.Log(other.gameObject.name + " is in range.");
         if (!inventory.AddItem(itemWorld.item, 1, itemWorld.gameObject)) return;
+        GameManager.instance.PlaySound(GameManager.instance.grabItemSound);
         //Debug.Log(other.gameObject.name + " has been added to inventory.");
         itemWorld.gameObject.SetActive(false);
     }

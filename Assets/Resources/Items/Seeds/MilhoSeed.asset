@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Milho Seed
   description: It will grow fast and tall
-  sprite: {fileID: 877536674, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
+  sprite: {fileID: 795380580, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   type: 0
   plantaBase: {fileID: 11400000, guid: d4e2ee7e44ea30246af5d478d009a02c, type: 2}

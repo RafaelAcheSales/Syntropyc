@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -779,7 +779,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -787,6 +787,279 @@ TextureImporter:
       bones: []
       spriteID: e567bf93a5a0faa4e91f8c86e38529b9
       internalID: -1660334092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_28
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 368
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900875aa6f72ca14e8633060b2af940d
+      internalID: 1708094910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 368
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c9651b2d2cfb64497c6baa223d6916
+      internalID: 849821340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_30
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 368
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acce214184df8fb4e84ec622b347fdf0
+      internalID: 1255488935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 368
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08ebd7ef36a3d4949937e8ad2d4e3d90
+      internalID: -914867500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_32
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 368
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ca3e9cb1dc49849ae25283838e5267
+      internalID: -810695603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_33
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 352
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba2b263a23011d4d9d251daeb969c67
+      internalID: -2076590467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_34
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 352
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b907aa792d142468f6c395af8c2bab
+      internalID: -854241170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_35
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 352
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524f65d7330861a48972f3b25f51478f
+      internalID: -906726657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_36
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 352
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d81f59b87b07e42896bf525d9e36b9
+      internalID: 1995592572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_37
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50aa3ea33074cd4d8591fde289510c5
+      internalID: -1255013598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_38
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b65a41daabee04ca25f5e71983295a
+      internalID: -2081406324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_39
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7975d90adab84a745b005c39b1b43bcf
+      internalID: -643988316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_40
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a003dff18c4e946bf49e914b1222cb
+      internalID: 124999919
       vertices: []
       indices: 
       edges: []
@@ -804,34 +1077,47 @@ TextureImporter:
     nameFileIdTable:
       Desert_0: -1655978095
       Desert_1: 1037886220
-      Desert_10: -830050419
-      Desert_11: -1327246395
-      Desert_12: 445230376
-      Desert_13: 675287797
-      Desert_14: 1534156154
-      Desert_15: 348982955
-      Desert_16: 225920554
-      Desert_17: -1426869148
-      Desert_18: -1478435652
-      Desert_19: 1550005154
-      Desert_2: -1199427959
-      Desert_20: 1039117962
-      Desert_21: 2082510097
-      Desert_22: 206987247
-      Desert_23: 1484129728
-      Desert_24: 799959893
-      Desert_25: 1555090141
-      Desert_26: -174765422
-      Desert_27: -1660334092
-      Desert_3: 909953696
-      Desert_4: 2096223510
-      Desert_5: -1491162044
-      Desert_6: 1937808149
-      Desert_7: 1927419833
-      Desert_8: 877536674
-      Desert_9: 2141271092
-      Scyte: -738444399
-      Water: -1627941088
+      Desert_10: -1199427959
+      Desert_11: 909953696
+      Desert_12: 2096223510
+      Desert_13: -1491162044
+      Desert_14: 1937808149
+      Desert_15: 1927419833
+      Desert_16: 877536674
+      Desert_17: 2141271092
+      Desert_18: -830050419
+      Desert_19: -1327246395
+      Desert_2: 445230376
+      Desert_20: 675287797
+      Desert_21: 1534156154
+      Desert_22: 348982955
+      Desert_23: 225920554
+      Desert_24: -1426869148
+      Desert_25: -1478435652
+      Desert_26: 1550005154
+      Desert_27: 1039117962
+      Desert_28: -1635405442
+      Desert_29: -25800524
+      Desert_3: 2082510097
+      Desert_30: -1226160873
+      Desert_31: 1582685148
+      Desert_32: 1125875125
+      Desert_33: 816007596
+      Desert_34: -1849926250
+      Desert_35: -1575683924
+      Desert_36: 1885659502
+      Desert_37: 1224719122
+      Desert_38: 1435347721
+      Desert_39: 1708094910
+      Desert_4: 206987247
+      Desert_40: 849821340
+      Desert_5: 1484129728
+      Desert_6: 799959893
+      Desert_7: 1555090141
+      Desert_8: -174765422
+      Desert_9: -1660334092
+      Scyte: 1003538844
+      Water: -1860859273
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

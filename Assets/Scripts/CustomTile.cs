@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -35,8 +33,8 @@ public class CustomTile : MonoBehaviour
     public float probabilityOfGrowingGrassPerSecond = 0.01f;
     public GameObject grassObj;
     public GameObject currentGrass = null;
-
-    public AnimatorController waterAnimator;
+    public Animator waterAnimator;
+    public AnimationClip waterAnimationClip;
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
     
@@ -47,11 +45,17 @@ public class CustomTile : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         grassObj = Resources.Load<GameObject>("Grass");
-        UpdateSprite();
+        waterAnimator = GetComponent<Animator>();
+        
         if (isWaterTile)
         {
             layerIsOccupied[0] = true;
         }
+        else
+        {
+            waterAnimator.enabled = false;
+        }
+        UpdateSprite();
         started = true;
 
     }
@@ -73,7 +77,8 @@ public class CustomTile : MonoBehaviour
     {
         float random = UnityEngine.Random.Range(0f, 1f);
         bool allLayersFree = !layerIsOccupied[0] && !layerIsOccupied[1] && !layerIsOccupied[2];
-        if (random <= probabilityOfGrowingGrassPerSecond && !hasGrassOnIt && allLayersFree)
+        float prob = probabilityOfGrowingGrassPerSecond * Time.deltaTime;
+        if (random <= prob && !hasGrassOnIt && allLayersFree)
         {
             Debug.Log("Growing grass");
             GameObject newGrass = Instantiate(grassObj, transform.position, Quaternion.identity);
@@ -102,10 +107,9 @@ public class CustomTile : MonoBehaviour
     {
         if (isWaterTile)
         {
-            gameObject.AddComponent<Animator>();
-            Animator animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = waterAnimator;
-            animator.speed = 0.4f;
+            waterAnimator.enabled = true;
+            //waterAnimator.
+            waterAnimator.speed = 0.4f;
             return;
         }
         float remapped = ExtensionMethods.Remap(syntropy, 0f, 1f, 0f, sprites.Length);
@@ -155,6 +159,8 @@ public class CustomTile : MonoBehaviour
 
     public string GetFormattedInfo()
     {
+        //percentage
+        //string formattedSyntropy = syntropy.ToString("P");
         return $"Syntropy: {syntropy}\nLight Level: {GetPlantLightLevel()}\nWater: {water}\nCompost: {compost}\nGrowth: {(GetPlantDevelopmentInfo()*100).ToString()}%";
     }
 

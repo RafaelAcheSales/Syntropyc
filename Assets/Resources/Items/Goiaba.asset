@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: Goiaba
   m_EditorClassIdentifier: 
   plantName: Goiaba
-  maximunTimeToGrow: 15
+  maximunTimeToGrow: 216
   plantLayer: 2
   plantPrefabPath: Plant
   stageOneVisual:
-  - {fileID: -1491520462, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 1578961657, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   - {fileID: 0}
   stageTwoVisual:
-  - {fileID: 1197996781, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
-  - {fileID: 1534510741, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 834017776, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 177819767, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   stageThreeVisual:
-  - {fileID: -1642452076, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
-  - {fileID: 1534510741, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 1190570069, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  - {fileID: 177819767, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
   growthStages:
   - row0: 000000
     row1: 000100

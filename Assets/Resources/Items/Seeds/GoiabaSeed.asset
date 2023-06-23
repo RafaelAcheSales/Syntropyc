@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Goiaba Seed
   description: Tall tree to create shadow
-  sprite: {fileID: 1089801830, guid: e754fd873eed80a4792d4174fb044a67, type: 3}
+  sprite: {fileID: 877536674, guid: d7fd6e1b1beda6743a494d4f4506ccfb, type: 3}
   type: 0
   plantaBase: {fileID: 11400000, guid: 0620a796f8ab14249aba901793f8967f, type: 2}

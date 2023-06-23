@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.Il2Cpp;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Tilemaps;
@@ -15,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
     public PlayableDirector playableDirector;
     public GameObject tooltipPrefab;
+    public GameObject congratulationsEndText;
     public GameObject inventoryUI;
     public GameObject player;
     public PlayerInventory playerInventory;
@@ -22,6 +21,10 @@ public class GameManager : MonoBehaviour
     public RectTransform globalSyntropyBar;
     public AudioSource audioSource;
     public AudioClip endGameSound;
+    public AudioClip cutSound;
+    public AudioClip waterSound;
+    public AudioClip grabItemSound;
+    public AudioClip putCompostSound;
     public int amountOfEachDebugItem = 5;
     public GameObject[] debugItems;
     private Vector2 offset;
@@ -33,6 +36,8 @@ public class GameManager : MonoBehaviour
     public float waterReserveMax = 10f;
     public float compostReserve = 10f;
     public float compostReserveMax = 10f;
+    public float globalGrowMultiplier = 1f;
+    public RectTransform totalSyntropy;
 
     // event delegate to hide/show branches for the currentViewLayer
     public delegate void OnLayerViewToggle(int layer);
@@ -126,6 +131,7 @@ public class GameManager : MonoBehaviour
         {
             c.gameObject.SetActive(false);
         }
+        congratulationsEndText.SetActive(true);
         audioSource.PlayOneShot(endGameSound);
     }
     public void CloseGame()
@@ -195,6 +201,18 @@ public class GameManager : MonoBehaviour
     {
         Vector3 mousePos = GetMouseScreenPos();
         CustomTile tile = grid.GetTile(new Vector2(Mathf.Round(mousePos.x), Mathf.Round(mousePos.y)));
+        return tile;
+    }
+    public GameObject CreatePickableObjectAt(Vector3 pos, ItemObject item, Transform parent = null)
+    {
+        GameObject pickableItem = Instantiate(debugItems[0], pos, Quaternion.identity, parent);
+        pickableItem.GetComponent<PickableItem>().item = item;
+        pickableItem.SetActive(true);
+        return pickableItem;
+    }
+    public CustomTile GetTileAt(Vector3 pos)
+    {
+        CustomTile tile = grid.GetTile(new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y)));
         return tile;
     }
 
@@ -278,6 +296,7 @@ public class GameManager : MonoBehaviour
             if (waterReserve <= 0) return;
             float valueToAdd = Mathf.Min(waterReserve, 1f);
             tile.AddWater(valueToAdd);
+            audioSource.PlayOneShot(waterSound);
             playerActionAnimator.WaterAction();
             waterReserve -= valueToAdd;
             waterReserve = Mathf.Clamp(waterReserve, 0f, waterReserveMax);
@@ -289,6 +308,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("FillWater");
         waterReserve = waterReserveMax;
+        PlaySound(waterSound);
+
     }
     void HanleCompostDebug(CustomTile tile)
     {
@@ -299,17 +320,22 @@ public class GameManager : MonoBehaviour
         tile.AddCompost(valueToAdd);
         compostReserve -= valueToAdd;
         compostReserve = Mathf.Clamp(compostReserve, 0f, compostReserveMax);
+        PlaySound(putCompostSound);
     }
     public void FillCompost()
     {
-
+        compostReserve = Mathf.Min(compostReserveMax, compostReserve + 1);
     }
     void HandleCut(CustomTile tile)
     {
         if (!Input.GetKeyDown(KeyCode.Space)) return;
         Debug.Log("HandleCut on tile: " + tile.name);
+        audioSource.PlayOneShot(cutSound);
         playerActionAnimator.ScyteAction();
-        tile.TryCutGrass();
+        if (tile.TryCutGrass())
+        {
+            compostReserve = Mathf.Min(compostReserveMax, compostReserve + 1);
+        }
     }
     void TryUseItem(ItemObject currentItem, CustomTile tile)
     {
@@ -364,6 +390,19 @@ public class GameManager : MonoBehaviour
             tile.GetComponent<SpriteRenderer>().color = color;
             
         }
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
+    public string GetCurrentSeason()
+    {
+        string[] seasons = new string[] { "Pioneer", "Intermediary", "Abundance" };
+        //map from 0f to 1f
+        int index = ExtensionMethods.MapFloatToIntInterval(globalSyntropyBar.localScale.x, 0f, 1f, 0, seasons.Length);
+        index = Mathf.Clamp(index, 0, seasons.Length - 1);
+        return seasons[index];
     }
 }
         

@@ -136,7 +136,7 @@ MonoBehaviour:
   item: {fileID: 0}
   spriteRenderer: {fileID: 0}
   currentCollider: {fileID: 0}
-  pickupTimeout: 5
+  pickupTimeout: 2
   fadeValue: 1
   minimumFadeValue: 0.4
   fadeRateSpeed: 0.5
